@@ -1,10 +1,10 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 
 """
-MP3 Convertor v3
+MP3 Converter v3
 Convert your video files to audio with ease.
 
-
+usage: mp3-converter.py <infile>|<indir> [outfile|outdir]
 
 """
 
@@ -37,12 +37,12 @@ def walk_file(infile, outfile):
 
 def convert_files():
     for infile, outfile in infiles: 
-        print "Converting '%s' to '%s'" % (infile, outfile)
+        print("Converting '%s' to '%s'" % (infile, outfile))
         call(["ffmpeg", "-i", infile, "-q:a", "0", "-map", "a", outfile])
 
 
 def help(exit=True):
-    sys.stderr.write("usage: mp3-convertor.py <infile>|<indir> [outfile|outdir]\n")
+    sys.stderr.write("usage: mp3-converter.py <infile>|<indir> [outfile|outdir]\n")
     if exit:
         sys.exit(1)
 
@@ -75,11 +75,11 @@ if __name__ == "__main__":
         else:
             name, ext = os.path.splitext(infile)
             if ext in ("mp3", "py"):
-                print "Invalid file name"
+                print("Invalid file name")
                 help()
             outfile = "%s.%s" % (name, "mp3")
             if os.path.exists(outfile):
-                print "File already exists"
+                print("File already exists")
                 help()
             else:
                 walk_file(infile, outfile)
@@ -90,7 +90,7 @@ if __name__ == "__main__":
         infile = sys.argv[1]
         outfile = sys.argv[2]
         if not os.path.exists(infile):
-            print "Input file doesn't exists"
+            print("Input file doesn't exists")
             help()
 
         if os.path.isdir(infile):
@@ -101,7 +101,7 @@ if __name__ == "__main__":
                     walk_dir(indir, outdir)
                     convert_files()
                 else:
-                    print "File already exists"
+                    print("File already exists")
                     help()
             else:
                 os.makedirs(outdir)
@@ -111,7 +111,7 @@ if __name__ == "__main__":
         else:
             name, ext = os.path.splitext(infile)
             if ext in ("mp3", "py"):
-                print "Invalid file name"
+                print("Invalid file name")
                 help()
             if os.path.exists(outfile):
                 if os.path.isdir(outfile):
@@ -119,10 +119,8 @@ if __name__ == "__main__":
                     walk_file(infile, outfile)
                     convert_files()
                 else:
-                    print "File alredy exists"
+                    print("File already exists")
                     help()
             else:
                 walk_file(infile, outfile)
                 convert_files()
-
-
