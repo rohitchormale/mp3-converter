@@ -6,4 +6,6 @@
 - ffmpeg
 
 ## usage
-mp3-converter.py <infile>|<indir> [outfile|outdir]
+
+
+```mp3-converter.py <infile>|<indir> [outfile|outdir]```
