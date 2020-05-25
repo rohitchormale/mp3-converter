@@ -13,6 +13,7 @@ import os
 from subprocess import call
 
 
+LOGLEVEL = "panic"
 infiles = []
 
 
@@ -38,7 +39,7 @@ def walk_file(infile, outfile):
 def convert_files():
     for infile, outfile in infiles: 
         print("Converting '%s' to '%s'" % (infile, outfile))
-        call(["ffmpeg", "-i", infile, "-q:a", "0", "-map", "a", outfile])
+        call(["ffmpeg", "-hide_banner", "-loglevel", LOGLEVEL, "-nostats", "-i", infile, "-q:a", "0", "-map", "a", outfile])
 
 
 def help(exit=True):
