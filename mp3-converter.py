@@ -23,7 +23,7 @@ def walk_dir(indir, outdir):
         for fname in files:
             # input path
             name, ext = os.path.splitext(fname)
-            if ext in ("mp3", "py"):
+            if ext in (".mp3", ".py"):
                 continue
             infile = os.path.join(root, fname)
             # output path
