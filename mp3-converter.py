@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+
+__version__ = "1.0.0"
+
+
 """
 MP3 Converter v3
 Convert your video files to audio with ease.
@@ -37,7 +41,7 @@ def walk_file(infile, outfile):
 
 
 def convert_files():
-    for infile, outfile in infiles: 
+    for infile, outfile in infiles:
         print("Converting '%s' to '%s'" % (infile, outfile))
         call(["ffmpeg", "-hide_banner", "-loglevel", LOGLEVEL, "-nostats", "-i", infile, "-q:a", "0", "-map", "a", outfile])
 
